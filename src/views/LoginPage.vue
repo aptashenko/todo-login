@@ -1,6 +1,9 @@
 <template>
   <div class="login-page">
-    <LoginForm />
+    <LoginForm
+        @set-user-info="$emit('set-user-info', $event)"
+        @set-user-token="$emit('set-user-token', $event)"
+    />
   </div>
 </template>
 

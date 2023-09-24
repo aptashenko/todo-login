@@ -6,10 +6,26 @@
   </div>
 </template>
 
+<script>
+import DefaultLayout from '@/layouts/default.vue'
+import {mapGetters} from "vuex";
+export default {
+  name: 'App',
+  components: {DefaultLayout},
+  computed: {
+    ...mapGetters(['isAuth'])
+  },
+  mounted() {
+    if (this.isAuth) this.$store.dispatch('getUserData')
+  }
+}
+</script>
+
 <style lang="scss">
 @import '@/assets/styles/nomralize.css';
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
 html {
@@ -28,6 +44,3 @@ h1, h2, h3, h4, h5, p, ul {
   height: 100%;
 }
 </style>
-<script setup>
-import DefaultLayout from "@/layouts/default.vue";
-</script>

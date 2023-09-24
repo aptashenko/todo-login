@@ -1,18 +1,16 @@
 <template>
-  <div class="button-wrapper">
-    <component
-        :is="element"
-        :disabled="$attrs.disabled || loading"
-        class="text text-md"
-        :class="mainClass"
-    >
-      <the-loader
-          v-if="loading"
-          :class="`${mainClass}-loader`"
-      />
-      <span v-else>{{label}}</span>
-    </component>
-  </div>
+  <component
+      :is="element"
+      :disabled="$attrs.disabled || loading"
+      class="text text-md"
+      :class="mainClass"
+  >
+    <the-loader
+        v-if="loading"
+        :class="`${mainClass}-loader`"
+    />
+    <span v-else>{{label}}</span>
+  </component>
 </template>
 
 <script>
@@ -59,10 +57,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/main.scss';
-
-.button-wrapper {
-  width: 100%;
-}
 
 .button {
   background: $green-primary;

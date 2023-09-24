@@ -35,7 +35,6 @@
 <script>
 import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
-import { getUsers } from "@/api";
 export default {
   name: 'LoginForm',
   components: {
@@ -73,26 +72,13 @@ export default {
   methods: {
     async auth() {
       this.loading = true
-      try {
-        const { data, status } = await getUsers()
-        if (status === 200) {
-          const email = this.form.email.value;
-          const phone = this.form.phone.value;
-          data.forEach(user => {
-            if (user.email === email && user.phone === phone) {
-              localStorage.setItem('token', 'token')
-              localStorage.setItem('user', JSON.stringify(user))
-              this.$router.push({name: 'home'})
-            } else {
-              this.error = 'User not found'
-            }
-          })
-        }
-      } catch(error) {
-        console.log(error)
-      } finally {
-        this.loading = false
+      const payload = {
+        email: this.form.email.value,
+        phone: this.form.phone.value
       }
+      const errorMessage = await this.$store.dispatch('signIn', payload)
+      if (errorMessage) this.error = errorMessage
+      this.loading = false
     }
   }
 }
