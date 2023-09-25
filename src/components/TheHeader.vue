@@ -19,9 +19,9 @@
         </div>
       </div>
       <base-button
-          @click="handleLogout"
           class="header__logout"
           label="logout"
+          @click.native="handleLogout"
       />
     </div>
     <div v-if="isAuth" class="header__mob">
@@ -44,9 +44,9 @@
       </div>
       <button class="header__menu-button" @click="toggleMenu">|||</button>
       <base-button
-          @click="handleLogout"
           class="header__logout"
           label="logout"
+          @click.native="handleLogout"
       />
     </div>
   </header>
@@ -70,6 +70,7 @@ export default {
   },
   methods: {
     handleLogout() {
+      console.log('aa')
       this.$store.dispatch('logout')
     },
     toggleMenu() {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {getTodos, getUsers} from "@/api";
+import {addTodo, getTodos, getUsers} from "@/api";
 import router from '../router/index'
 
 Vue.use(Vuex)
@@ -33,7 +33,7 @@ export default new Vuex.Store({
     },
     SET_TODOS(state, payload) {
       state.todos = payload
-    }
+    },
   },
   actions: {
     async signIn({commit}, {email, phone}) {
@@ -73,6 +73,13 @@ export default new Vuex.Store({
         }
       } catch(error) {
         return error.message
+      }
+    },
+    addNewTodo() {
+      try {
+        addTodo()
+      } catch (error) {
+        console.log(error)
       }
     }
   },

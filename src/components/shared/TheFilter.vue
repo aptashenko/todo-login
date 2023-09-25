@@ -2,9 +2,8 @@
   <select
       :value="value"
       @input="$emit('input', $event.target.value)"
-      @change="$emit('change')"
   >
-    >
+    <option selected>All</option>
     <option
         v-for="option of options"
         :key="option.id"
@@ -24,6 +23,9 @@ export default {
     },
     value: {
       type: String,
+    },
+    id: {
+      type: Number,
     }
   }
 }

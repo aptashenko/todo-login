@@ -9,3 +9,7 @@ export const getUsers = () => {
 export const getTodos = () => {
     return axios.get('/todos')
 }
+
+export const addTodo = () => {
+    alert('method POST to add new TODO')
+}

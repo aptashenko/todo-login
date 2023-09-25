@@ -11,8 +11,10 @@
       </h2>
       <div class="login-form__inputs">
         <base-input
+            v-maska
             v-for="input in form"
             v-model="input.value"
+            :mask="input.mask"
             :id="input.id"
             :placeholder="input.label"
             :type="input.type"
@@ -35,8 +37,11 @@
 <script>
 import BaseInput from "@/components/ui/BaseInput.vue";
 import BaseButton from "@/components/ui/BaseButton.vue";
+import { vMaska } from "maska"
+
 export default {
   name: 'LoginForm',
+  directives: { maska: vMaska },
   components: {
     BaseButton,
     BaseInput
